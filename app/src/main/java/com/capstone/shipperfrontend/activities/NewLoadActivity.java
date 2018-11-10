@@ -11,16 +11,14 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
-import android.widget.Toast;
+import com.google.firebase.database.DatabaseReference;
+//import com.google.firebase.database.FirebaseDatabase;
 
-import com.capstone.shipperfrontend.R;
-import com.capstone.shipperfrontend.models.HashedPassword;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
-import com.google.firebase.auth.AuthResult;
-import com.google.firebase.auth.FirebaseAuth;
 
 public class NewLoadActivity extends AppCompatActivity {
+
+    DatabaseReference loadData;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,9 +27,14 @@ public class NewLoadActivity extends AppCompatActivity {
     }
 
     protected void onClick(View view){
-        EditText loadName = findViewById(R.id.tvLoadName);
+        EditText load = findViewById(R.id.tvLoadName);
         EditText origin = findViewById(R.id.tvOrigin);
         EditText destination = findViewById(R.id.tvDestination);
+        EditText price = findViewById(R.id.tvPrice);
 
+        String loadName = load.toString();
+        String originAddress = origin.toString();
+        String destAddress = destination.toString();
+        int priceV = Integer.parseInt(price.toString());
     }
 }
