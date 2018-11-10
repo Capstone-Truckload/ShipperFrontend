@@ -5,67 +5,94 @@ import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
+import android.widget.Button;
 import android.widget.Toast;
 
+import com.capstone.shipperfrontend.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
-import com.capstone.shipperfrontend.R;
-import com.capstone.shipperfrontend.models.HashedPassword;
 
 public class LoginActivity extends AppCompatActivity {
+
+    private EditText UserName;
+    private EditText Password;
+    private TextView Info;
+    private Button Login;
+    private int counter = 5;
+    private TextView userRegistration;
+    private FirebaseAuth firebaseAuth;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-    }
 
-    public void onClick(View view) {
-        String text = ((Button) view).getText().toString();
-        if (text.equals(getResources().getString(R.string.submit_text))) {
-            login();
-        } else if (text.equals(getResources().getString(R.string.create_account_text))) {
-            newAccount();
+        UserName = (EditText) findViewById(R.id.nameInput);
+        Password = (EditText) findViewById(R.id.passwordInput);
+        Info = (TextView) findViewById(R.id.tvInfo);
+        Login = (Button) findViewById(R.id.btnLogin);
+        userRegistration = (TextView)findViewById(R.id.btnRegister);
+
+        Info.setText("No of attempts remaining: 5");
+
+        firebaseAuth = FirebaseAuth.getInstance();
+
+        FirebaseUser user = firebaseAuth.getCurrentUser();
+
+        if(user != null)
+        {
+            finish();
+            startActivity(new Intent(LoginActivity.this, HubActivity.class));
         }
+
+        Login.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View view)
+            {
+                validate(UserName.getText().toString(), Password.getText().toString());
+            }
+
+        });
+
+        userRegistration.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(LoginActivity.this, AccountCreationActivity.class));
+            }
+        });
+
     }
 
-    private void newAccount() {
-        Intent newAccountIntent = new Intent(this, AccountCreationActivity.class);
-        startActivity(newAccountIntent);
-    }
-
-    private void login() {
-        EditText nameInput = findViewById(R.id.nameInput);
-        EditText passwordInput = findViewById(R.id.passwordInput);
-        String name = nameInput.getText().toString();
-        String password = passwordInput.getText().toString();
-        int iterations = getResources().getInteger(R.integer.hashing_iterations);
-        int keyLength = getResources().getInteger(R.integer.password_hash_length);
-        HashedPassword hash = new HashedPassword(password, name, iterations, keyLength);
-
-        validateFirebase(name, hash.string);
-    }
-
-    private void validateFirebase(String userName, String userPassword)
+    private void validate(String userName, String userPassword)
     {
-        FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
+
         firebaseAuth.signInWithEmailAndPassword(userName, userPassword).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if(task.isSuccessful())
                 {
-                    Intent loginIntent = new Intent(LoginActivity.this, HubActivity.class);
-                    startActivity(loginIntent);
+                    Toast.makeText(LoginActivity.this, "Login Successful!", Toast.LENGTH_SHORT).show();
+                    startActivity(new Intent(LoginActivity.this, HubActivity.class));
                 }
                 else
                 {
                     Toast.makeText(LoginActivity.this, "Login Failed", Toast.LENGTH_SHORT).show();
+                    counter--;
+                    Info.setText("No of attempts remaining: " + counter);
+                    if(counter == 0)
+                    {
+                        Login.setEnabled(false);
+                    }
                 }
+
             }
         });
     }

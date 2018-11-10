@@ -5,44 +5,90 @@ import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.capstone.shipperfrontend.R;
-import com.capstone.shipperfrontend.models.HashedPassword;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 
-public class AccountCreationActivity extends AppCompatActivity {
+public class AccountCreationActivity extends AppCompatActivity
+{
+
+    private EditText userName, userPassword, userEmail;
+    private Button regButton;
+    private TextView userLogin;
+    private FirebaseAuth firebaseAuth;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState)
+    {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_account_creation);
+        setupUIViews();
+
+        firebaseAuth = FirebaseAuth.getInstance();
+
+        regButton.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View view) {
+                if (validate()) {
+                    //Upload data to the database
+                    String user_email = userEmail.getText().toString().trim();
+                    String user_password = userPassword.getText().toString().trim();
+
+                    firebaseAuth.createUserWithEmailAndPassword(user_email, user_password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                        @Override
+                        public void onComplete(@NonNull Task<AuthResult> task) {
+                            if(task.isSuccessful())
+                            {
+                                Toast.makeText(AccountCreationActivity.this, "Registration Successful!", Toast.LENGTH_SHORT).show();
+                                startActivity(new Intent(AccountCreationActivity.this, LoginActivity.class));
+                            }
+                            else{
+                                Toast.makeText(AccountCreationActivity.this, "Registration Failed", Toast.LENGTH_SHORT).show();
+                            }
+                        }
+                    });
+                }
+            }
+        });
+
+        userLogin.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View view)
+            {
+                startActivity(new Intent(AccountCreationActivity.this, LoginActivity.class));
+            }
+
+        });
+
     }
 
-    public void onClick(View view) {
-        EditText nameInput = findViewById(R.id.nameInput);
-        EditText passwordInput = findViewById(R.id.passwordInput);
-        EditText emailInput = findViewById(R.id.emailInput);
-        String name = nameInput.getText().toString();
-        String password = passwordInput.getText().toString();
-        String email = emailInput.getText().toString();
-        int iterations = getResources().getInteger(R.integer.hashing_iterations);
-        int keyLength = getResources().getInteger(R.integer.password_hash_length);
-
-        if (validate(name, password, email)) {
-            HashedPassword hash = new HashedPassword(password, name, iterations, keyLength);
-            register(email, hash.string);
-        }
+    private void setupUIViews()
+    {
+        userName = (EditText)findViewById(R.id.nameInput);
+        userPassword = (EditText)findViewById(R.id.passwordInput);
+        userEmail = (EditText)findViewById (R.id.emailInput);
+        regButton = (Button)findViewById(R.id.btnRegister);
+        userLogin = (TextView)findViewById(R.id.tvUserLogin);
     }
 
-    private Boolean validate(String userName, String userPassword, String userEmail) {
+    private Boolean validate()
+    {
         Boolean result = false;
 
-        if(userName.isEmpty() || userPassword.isEmpty() || userEmail.isEmpty())
+        String name = userName.getText().toString();
+        String password = userPassword.getText().toString();
+        String email = userEmail.getText().toString();
+
+        if(name.isEmpty() || password.isEmpty() || email.isEmpty())
         {
             Toast.makeText(this, "Please enter all the details", Toast.LENGTH_SHORT).show();
         }
@@ -52,25 +98,5 @@ public class AccountCreationActivity extends AppCompatActivity {
         }
 
         return result;
-    }
-
-
-    private void register(String userName, String userPassword)
-    {
-        FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
-        firebaseAuth.createUserWithEmailAndPassword(userName, userPassword).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-            @Override
-            public void onComplete(@NonNull Task<AuthResult> task) {
-                if(task.isSuccessful())
-                {
-                    Intent loginIntent = new Intent(AccountCreationActivity.this, HubActivity.class);
-                    startActivity(loginIntent);
-                }
-                else
-                {
-                    Toast.makeText(AccountCreationActivity.this, "Registration Failed", Toast.LENGTH_SHORT).show();
-                }
-            }
-        });
     }
 }
