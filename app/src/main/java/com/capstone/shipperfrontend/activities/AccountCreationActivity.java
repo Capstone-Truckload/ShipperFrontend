@@ -35,7 +35,7 @@ public class AccountCreationActivity extends AppCompatActivity {
 
         if (validate(name, password, email)) {
             HashedPassword hash = new HashedPassword(password, name, iterations, keyLength);
-            register(name, hash.string);
+            register(email, hash.string);
         }
     }
 
@@ -53,6 +53,7 @@ public class AccountCreationActivity extends AppCompatActivity {
 
         return result;
     }
+
 
     private void register(String userName, String userPassword)
     {
