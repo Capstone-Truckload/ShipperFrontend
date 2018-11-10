@@ -10,7 +10,7 @@
       "client_info": {
         "mobilesdk_app_id": "1:619364245639:android:566241549458916b",
         "android_client_info": {
-          "package_name": "com.capstone.shipperfrontend.activities"
+          "package_name": "com.capstone.shipperfrontend"
         }
       },
       "oauth_client": [
