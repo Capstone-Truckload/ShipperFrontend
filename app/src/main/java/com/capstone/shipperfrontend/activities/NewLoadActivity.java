@@ -29,9 +29,9 @@ public class NewLoadActivity extends AppCompatActivity {
     }
 
     protected void onClick(View view){
-        EditText loadName = findViewById(R.id.loadName);
-        EditText origin = findViewById(R.id.originAddress);
-        EditText destination = findViewById(R.id.destinationAddress);
+        EditText loadName = findViewById(R.id.tvLoadName);
+        EditText origin = findViewById(R.id.tvOrigin);
+        EditText destination = findViewById(R.id.tvDestination);
 
     }
 }
