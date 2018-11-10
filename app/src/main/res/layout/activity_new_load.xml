@@ -28,10 +28,6 @@
         android:layout_marginEnd="8dp"
         android:text="Create New Load"
         app:layout_constraintEnd_toEndOf="parent"
-<<<<<<< HEAD
-=======
-        app:layout_constraintHorizontal_bias="0.065"
->>>>>>> 9456ae45e3cf83cdf5f65c311c1a9f8d531b1aed
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -40,11 +36,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-<<<<<<< HEAD
         android:layout_marginTop="24dp"
-=======
-        android:layout_marginTop="12dp"
->>>>>>> 9456ae45e3cf83cdf5f65c311c1a9f8d531b1aed
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
         android:ems="10"
@@ -52,11 +44,7 @@
         android:inputType="numberDecimal"
         app:layout_constraintBottom_toTopOf="@+id/createLoad"
         app:layout_constraintEnd_toEndOf="parent"
-<<<<<<< HEAD
         app:layout_constraintHorizontal_bias="0.503"
-=======
-        app:layout_constraintHorizontal_bias="1.0"
->>>>>>> 9456ae45e3cf83cdf5f65c311c1a9f8d531b1aed
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvDestination"
         app:layout_constraintVertical_bias="0.142" />
@@ -66,35 +54,20 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-<<<<<<< HEAD
         android:layout_marginTop="24dp"
-=======
-        android:layout_marginTop="20dp"
->>>>>>> 9456ae45e3cf83cdf5f65c311c1a9f8d531b1aed
         android:layout_marginEnd="8dp"
         android:ems="10"
         android:hint="Destination Address"
         android:inputType="textPostalAddress"
         app:layout_constraintEnd_toEndOf="parent"
-<<<<<<< HEAD
         app:layout_constraintHorizontal_bias="0.503"
-=======
-        app:layout_constraintHorizontal_bias="1.0"
->>>>>>> 9456ae45e3cf83cdf5f65c311c1a9f8d531b1aed
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvOrigin" />
 
-<<<<<<< HEAD
     <EditText
         android:id="@+id/tvOrigin"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-=======
-    <Button
-        android:id="@+id/btn_createLoad"
-        android:layout_width="191dp"
-        android:layout_height="51dp"
->>>>>>> 9456ae45e3cf83cdf5f65c311c1a9f8d531b1aed
         android:layout_marginStart="8dp"
         android:layout_marginTop="24dp"
         android:layout_marginEnd="8dp"
@@ -117,22 +90,7 @@
         android:hint="LoadName"
         android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
-<<<<<<< HEAD
         app:layout_constraintHorizontal_bias="0.503"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView3" />
-=======
-        app:layout_constraintHorizontal_bias="0.058"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/destinationAddress" />
-
-    <TextView
-        android:id="@+id/textView3"
-        android:layout_width="wrap_content"
-        android:layout_height="48dp"
-        android:text="Create New Load"
-        android:textAppearance="@style/TextAppearance.AppCompat.Display1"
-        tools:layout_editor_absoluteX="73dp"
-        tools:layout_editor_absoluteY="16dp" />
->>>>>>> 9456ae45e3cf83cdf5f65c311c1a9f8d531b1aed
 </android.support.constraint.ConstraintLayout>
