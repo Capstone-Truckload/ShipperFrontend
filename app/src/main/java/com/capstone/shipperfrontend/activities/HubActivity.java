@@ -10,23 +10,41 @@ import com.capstone.shipperfrontend.R;
 
 public class HubActivity extends AppCompatActivity {
 
+    private Button CreateLoad;
+    private Button ViewLoad;
+    private Button Account;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_hub);
-    }
 
-    public void onClick(View view) {
-        String text = ((Button) view).getText().toString();
-        if (text.equals(getResources().getString(R.string.new_load_text))) {
-            Intent redirectIntent = new Intent(this, NewLoadActivity.class);
-            startActivity(redirectIntent);
-        } else if (text.equals(getResources().getString(R.string.current_loads_text))) {
-            Intent redirectIntent = new Intent(this, CurrentLoadsActivity.class);
-            startActivity(redirectIntent);
-        } else if (text.equals(getResources().getString(R.string.manage_account_text))) {
-            Intent redirectIntent = new Intent(this, ManageAccountActivity.class);
-            startActivity(redirectIntent);
-        }
+        CreateLoad = (Button) findViewById(R.id.newLoadButton);
+        ViewLoad = (Button) findViewById(R.id.currentButton);
+        Account = (Button) findViewById(R.id.accountButton);
+
+        CreateLoad.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(HubActivity.this, NewLoadActivity.class));
+            }
+        });
+
+        ViewLoad.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(HubActivity.this, CurrentLoadsActivity.class));
+            }
+        });
+
+        Account.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(HubActivity.this, ManageAccountActivity.class));
+            }
+        });
     }
 }
