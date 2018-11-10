@@ -1,0 +1,148 @@
+{
+  "project_info": {
+    "project_number": "796409067072",
+    "firebase_url": "https://client-c8dcb.firebaseio.com",
+    "project_id": "client-c8dcb",
+    "storage_bucket": "client-c8dcb.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:796409067072:android:540d48785e2ed898",
+        "android_client_info": {
+          "package_name": "com.capstone.shipperfrontend"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "796409067072-lfektshithdi8386mn3p09j6onh9blr6.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBaP8gTrwMGSSrUJMTzLeLdl0zuIWle5mo"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:796409067072:android:566241549458916b",
+        "android_client_info": {
+          "package_name": "com.capstone.shipperfrontend.activities"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "796409067072-5dhafcrdjj8h31kcvrak1fesira0ilsu.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.capstone.shipperfrontend.activities",
+            "certificate_hash": "81f17b4ab54dce2a4aec875205fd986740ca3363"
+          }
+        },
+        {
+          "client_id": "796409067072-lfektshithdi8386mn3p09j6onh9blr6.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBaP8gTrwMGSSrUJMTzLeLdl0zuIWle5mo"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "796409067072-lfektshithdi8386mn3p09j6onh9blr6.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:796409067072:android:b57ac3e1d2f0df76",
+        "android_client_info": {
+          "package_name": "com.capstone.truckerfrontend"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "796409067072-lfektshithdi8386mn3p09j6onh9blr6.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBaP8gTrwMGSSrUJMTzLeLdl0zuIWle5mo"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:796409067072:android:854a48d672bb8a22",
+        "android_client_info": {
+          "package_name": "com.capstone.truckerfrontend.activities"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "796409067072-lfektshithdi8386mn3p09j6onh9blr6.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBaP8gTrwMGSSrUJMTzLeLdl0zuIWle5mo"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
