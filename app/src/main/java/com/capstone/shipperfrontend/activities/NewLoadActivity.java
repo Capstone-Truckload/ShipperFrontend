@@ -13,9 +13,12 @@ import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
+
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -25,12 +28,12 @@ import java.util.UUID;
 
 public class NewLoadActivity extends AppCompatActivity {
 
-    DatabaseReference loadData;
-    EditText load;
-    EditText origin;
-    EditText destination;
-    EditText price;
-    Button createLoad;
+    private DatabaseReference loadData;
+    private EditText load;
+    private EditText origin;
+    private EditText destination;
+    private EditText price;
+    private Button loadadd;
 
 
     @Override
@@ -38,38 +41,51 @@ public class NewLoadActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_new_load);
 
-        createLoad.setOnClickListener(new View.OnClickListener() {
-                                          @Override
-                                          public void onClick(View view) {
+        loadData = FirebaseDatabase.getInstance().getReference("loads");
 
-                                          }
-                                      }
+        load = (EditText) findViewById(R.id.tvLoadName);
+        origin = (EditText) findViewById(R.id.tvOrigin);
+        destination = (EditText) findViewById(R.id.tvDestination);
+        price = (EditText) findViewById(R.id.tvPrice);
+        loadadd = (Button) findViewById(R.id.createLoad);
 
-
-        );
-
+        loadadd.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View view) {
+                addLoad();
+            }
+        });
     }
 
-    protected void onClick(View view){
-        loadData = FirebaseDatabase.getInstance().getReference();
+    private void addLoad(){
+        Toast.makeText(this, "You pressed a button!", Toast.LENGTH_LONG).show();
 
-        load = findViewById(R.id.tvLoadName);
-        origin = findViewById(R.id.tvOrigin);
-        destination = findViewById(R.id.tvDestination);
-        price = findViewById(R.id.tvPrice);
+        String loadName = load.getText().toString().trim();
+        String originAddress = origin.getText().toString().trim();
+        String destAddress = destination.getText().toString().trim();
+        String priceV = price.getText().toString().trim();
 
-        String loadName = load.toString();
-        String originAddress = origin.toString();
-        String destAddress = destination.toString();
-        int priceV = Integer.parseInt(price.toString());
+        if(!TextUtils.isEmpty(loadName)){
+            String id = loadData.push().getKey();
 
-        //generate new ID
-        UUID id = UUID.randomUUID();
+            Load load = new Load(loadName, id, originAddress, destAddress, priceV);
 
-        DatabaseReference loadsRef = loadData.child("loads");
+            loadData.child(id).setValue(load);
 
-        Map<String, Load> loads = new HashMap<>();
-        loads.put(loadName,  new Load(loadName, id, originAddress, destAddress, priceV));
-        loadsRef.setValue(loads);
+            Toast.makeText(this, "Load added", Toast.LENGTH_LONG).show();
+        }
+        else{
+            Toast.makeText(this, "You should give it a name", Toast.LENGTH_LONG).show();
+        }
     }
 }
+
+//generate new ID
+//UUID id = UUID.randomUUID();
+
+//DatabaseReference loadsRef = loadData.child("loads");
+
+//Map<String, Load> loads = new HashMap<>();
+//loads.put(loadName,  new Load(loadName, id, originAddress, destAddress, priceV));
+//loadsRef.setValue(loads);

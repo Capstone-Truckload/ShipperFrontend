@@ -4,13 +4,13 @@ import java.util.UUID;
 
 public class Load {
     String name;
-    UUID id;
+    String id;
     String origin;
     String destination;
-    double price;
+    String price;
 
 
-    public Load(String name, UUID id, String origin, String destination, double price) {
+    public Load(String name, String id, String origin, String destination, String price) {
         this.name = name;
         this.id = id;
         this.origin = origin;
@@ -36,11 +36,11 @@ public class Load {
         this.name = name;
     }
 
-    public UUID getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(UUID id) {
+    public void setId(String id) {
         this.id = id;
     }
 
@@ -60,11 +60,11 @@ public class Load {
         this.destination = destination;
     }
 
-    public double getPrice() {
+    public String getPrice() {
         return price;
     }
 
-    public void setPrice(double price) {
+    public void setPrice(String price) {
         this.price = price;
     }
 }
