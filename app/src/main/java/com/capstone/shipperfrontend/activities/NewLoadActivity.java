@@ -2,6 +2,7 @@ package com.capstone.shipperfrontend.activities;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import java.util.UUID;
 
 import com.capstone.shipperfrontend.R;
 
@@ -12,6 +13,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 import com.google.firebase.database.DatabaseReference;
+
+import java.util.UUID;
 //import com.google.firebase.database.FirebaseDatabase;
 
 
@@ -36,5 +39,13 @@ public class NewLoadActivity extends AppCompatActivity {
         String originAddress = origin.toString();
         String destAddress = destination.toString();
         int priceV = Integer.parseInt(price.toString());
+
+        //generate new ID
+        UUID id = UUID.randomUUID();
+
+        Load l = new Load(loadName, id, originAddress, destAddress, priceV);
+
+        //add Load l to the FireBase database
+
     }
 }

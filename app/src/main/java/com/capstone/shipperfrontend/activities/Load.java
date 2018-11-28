@@ -1,14 +1,16 @@
 package com.capstone.shipperfrontend.activities;
 
+import java.util.UUID;
+
 public class Load {
     String name;
-    int id;
+    UUID id;
     String origin;
     String destination;
     double price;
 
 
-    public Load(String name, int id, String origin, String destination, double price) {
+    public Load(String name, UUID id, String origin, String destination, double price) {
         this.name = name;
         this.id = id;
         this.origin = origin;
@@ -34,11 +36,11 @@ public class Load {
         this.name = name;
     }
 
-    public int getId() {
+    public UUID getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(UUID id) {
         this.id = id;
     }
 
