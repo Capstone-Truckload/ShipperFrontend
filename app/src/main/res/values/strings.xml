@@ -11,4 +11,7 @@
     <string name="new_load_text">Create New Load</string>
     <string name="current_loads_text">Current Loads</string>
     <string name="manage_account_text">Manage Account</string>
+    <string name="empty_owner_text">Bidding In Progress</string>
+    <string name="default_distance_text">0</string>
+    <string name="distance_append_text"> mi</string>
 </resources>

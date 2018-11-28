@@ -20,7 +20,9 @@
         <activity android:name=".activities.HubActivity" />
         <activity android:name=".activities.ManageAccountActivity" />
         <activity android:name=".activities.CurrentLoadsActivity" />
-        <activity android:name=".activities.NewLoadActivity"></activity>
+        <activity android:name=".activities.NewLoadActivity" />
+        <activity android:name=".activities.LoadListActivity" />
+        <activity android:name=".activities.LoadDetailsActivity"></activity>
     </application>
 
 </manifest>
