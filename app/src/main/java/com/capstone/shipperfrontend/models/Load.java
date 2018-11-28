@@ -1,8 +1,9 @@
-package com.capstone.shipperfrontend.activities;
+package com.capstone.shipperfrontend.models;
 
+import java.io.Serializable;
 import java.util.UUID;
 
-public class Load {
+public class Load implements Serializable {
     String name;
     UUID id;
     String origin;
