@@ -28,7 +28,7 @@ public class LoadListActivity extends AppCompatActivity implements ClickListener
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_load_list);
 
-        loadsRecyclerView = findViewById(R.id.recycler_view);
+        //loadsRecyclerView = findViewById(R.id.recycler_view);
         loadsRecyclerView.setHasFixedSize(true);
         loadsAdapter = new LoadsAdapter(loadList);
         RecyclerView.LayoutManager albumLayoutManager = new LinearLayoutManager(getApplicationContext());

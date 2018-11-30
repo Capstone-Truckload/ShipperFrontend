@@ -24,7 +24,6 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.UUID;
-//import com.google.firebase.database.FirebaseDatabase;
 
 
 public class NewLoadActivity extends AppCompatActivity {
@@ -81,12 +80,3 @@ public class NewLoadActivity extends AppCompatActivity {
         }
     }
 }
-
-//generate new ID
-//UUID id = UUID.randomUUID();
-
-//DatabaseReference loadsRef = loadData.child("loads");
-
-//Map<String, Load> loads = new HashMap<>();
-//loads.put(loadName,  new Load(loadName, id, originAddress, destAddress, priceV));
-//loadsRef.setValue(loads);
