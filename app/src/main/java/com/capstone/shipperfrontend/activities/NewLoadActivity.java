@@ -6,6 +6,7 @@ import android.os.Bundle;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
+import java.lang.Object;
 
 import com.capstone.shipperfrontend.R;
 
@@ -20,6 +21,8 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.capstone.shipperfrontend.models.Load;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -35,6 +38,7 @@ public class NewLoadActivity extends AppCompatActivity {
     private EditText destination;
     private EditText price;
     private Button loadadd;
+    private FirebaseAuth firebaseAuth;
 
 
     @Override
@@ -69,8 +73,10 @@ public class NewLoadActivity extends AppCompatActivity {
 
         if(!TextUtils.isEmpty(loadName)){
             String id = loadData.push().getKey();
+            firebaseAuth = FirebaseAuth.getInstance();
+            String uid = firebaseAuth.getCurrentUser().getUid();
 
-            Load load = new Load(loadName, id, originAddress, destAddress, priceV);
+            Load load = new Load(loadName, uid, originAddress, destAddress, priceV);
 
             loadData.child(id).setValue(load);
 
