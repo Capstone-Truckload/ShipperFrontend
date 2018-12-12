@@ -1,4 +1,4 @@
-package com.capstone.shipperfrontend.adapters;
+/*package com.capstone.shipperfrontend.adapters;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -47,4 +47,4 @@ public class LoadsAdapter extends RecyclerView.Adapter<LoadsAdapter.LoadsViewHol
     public int getItemCount() {
         return loadList.size();
     }
-}
+}*/

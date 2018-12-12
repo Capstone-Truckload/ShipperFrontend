@@ -10,6 +10,7 @@ public class Load implements Serializable {
     String destination;
     String price;
 
+    public Load(){}
 
     public Load(String name, String id, String origin, String destination, String price) {
         this.name = name;
@@ -28,13 +29,12 @@ public class Load implements Serializable {
         this.price = that.price;
     }
 
-
-    public String getName() {
-        return name;
+    public String getDestination() {
+        return destination;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setDestination(String destination) {
+        this.destination = destination;
     }
 
     public String getId() {
@@ -45,20 +45,20 @@ public class Load implements Serializable {
         this.id = id;
     }
 
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
     public String getOrigin() {
         return origin;
     }
 
     public void setOrigin(String origin) {
         this.origin = origin;
-    }
-
-    public String getDestination() {
-        return destination;
-    }
-
-    public void setDestination(String destination) {
-        this.destination = destination;
     }
 
     public String getPrice() {
